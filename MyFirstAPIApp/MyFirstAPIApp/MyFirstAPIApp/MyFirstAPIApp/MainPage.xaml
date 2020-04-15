@@ -8,9 +8,17 @@
 
     <StackLayout>
         <!-- Place new controls here -->
-        <Label Text="Welcome to Xamarin.Forms!" 
+        <ListView x:Name="Movies" 
            HorizontalOptions="Center"
-           VerticalOptions="CenterAndExpand" />
+           VerticalOptions="CenterAndExpand">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <Label x:Name="lbl_title" Text="{Binding feed.title.label}"></Label>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
     </StackLayout>
 
 </ContentPage>

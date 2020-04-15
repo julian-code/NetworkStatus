@@ -13,9 +13,17 @@ namespace MyFirstAPIApp
     [DesignTimeVisible(false)]
     public partial class MainPage : ContentPage
     {
+        private readonly MovieDataManager _mdm;
         public MainPage()
         {
+            _mdm = new MovieDataManager();
             InitializeComponent();
+        }
+
+        protected async override void OnAppearing()
+        {
+            base.OnAppearing();
+            Movies.ItemsSource = await _mdm.GetMovies();
         }
     }
 }
