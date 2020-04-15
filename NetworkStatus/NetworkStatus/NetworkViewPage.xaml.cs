@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Plugin.Connectivity;
+using Plugin.Connectivity.Abstractions;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -15,6 +17,24 @@ namespace NetworkStatus
         public NetworkViewPage()
         {
             InitializeComponent();
+        }
+
+        protected override void OnAppearing()
+        {
+            base.OnAppearing();
+            ConnectionDetails.Text = CrossConnectivity.Current.ConnectionTypes.First().ToString();
+            CrossConnectivity.Current.ConnectivityTypeChanged += HandleConnectivityChanged;
+        }
+
+        private void HandleConnectivityChanged(object sender, ConnectivityTypeChangedEventArgs e)
+        {
+            ConnectionDetails.Text = CrossConnectivity.Current.ConnectionTypes.First().ToString();
+        }
+
+        protected override void OnDisappearing()
+        {
+            base.OnDisappearing();
+            CrossConnectivity.Current.ConnectivityTypeChanged -= HandleConnectivityChanged;
         }
     }
 }
