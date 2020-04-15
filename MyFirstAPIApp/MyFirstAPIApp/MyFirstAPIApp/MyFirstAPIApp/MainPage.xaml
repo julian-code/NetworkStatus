@@ -14,7 +14,14 @@
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <ViewCell>
-                        <Label x:Name="lbl_title" Text="{Binding feed.title.label}"></Label>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="5*"/>
+                            </Grid.ColumnDefinitions>
+                            <Image Source="{Binding imimage[0].label, FallbackValue=hest}" Grid.Column="0"/>
+                            <Label x:Name="lbl_title" Text="{Binding title.label}" Grid.Column="1"></Label>
+                        </Grid>
                     </ViewCell>
                 </DataTemplate>
             </ListView.ItemTemplate>

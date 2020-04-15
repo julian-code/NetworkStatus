@@ -20,9 +20,9 @@ namespace MyFirstAPIApp
             return httpClient;
         }
 
-        public async Task<List<Movie>> GetMovies()
+        public async Task<Feed> GetFeed()
         {
-            return JsonConvert.DeserializeObject<List<Movie>>(await GetClient().GetStringAsync(Url));
+            return JsonConvert.DeserializeObject<Movie>(await GetClient().GetStringAsync(Url)).feed;
         }
     }
 }

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 
 namespace MyFirstAPIApp
 {
@@ -64,6 +65,7 @@ namespace MyFirstAPIApp
     {
         public ImName imname { get; set; }
         public Rights1 rights { get; set; }
+        [JsonProperty("im:image")]
         public ImImage[] imimage { get; set; }
         public Summary summary { get; set; }
         public ImRentalprice imrentalPrice { get; set; }

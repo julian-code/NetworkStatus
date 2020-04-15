@@ -23,7 +23,8 @@ namespace MyFirstAPIApp
         protected async override void OnAppearing()
         {
             base.OnAppearing();
-            Movies.ItemsSource = await _mdm.GetMovies();
+            var feed = await _mdm.GetFeed();
+            Movies.ItemsSource = feed.entry;
         }
     }
 }
